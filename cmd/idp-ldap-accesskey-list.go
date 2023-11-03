@@ -64,14 +64,16 @@ EXAMPLES:
   1. Get list of all users and associated access keys in local server (if admin)
  	 {{.Prompt}} {{.HelpName}} local/
   2. Get list of users in local server (if admin)
- 	 {{.Prompt}} {{.HelpName}} local/ --users
-  3. Get list of all users and associated temporary access keys in play server (if admin)
-	 {{.Prompt}} {{.HelpName}} play/ --temp-only
+ 	 {{.Prompt}} {{.HelpName}} local/ --users-only
+  3. Get list of all users and associated STS keys in play server (if admin)
+	 {{.Prompt}} {{.HelpName}} play/ --sts-only
   4. Get list of access keys associated with user 'bobfisher'
   	 {{.Prompt}} {{.HelpName}} play/ uid=bobfisher,dc=min,dc=io
-  5. Get list of access keys associated with users 'bobfisher' and 'cody3'
+  5. Get list of access keys associated with user 'bobfisher' (alt)
+	 {{.Prompt}} {{.HelpName}} play/ bobfisher
+  6. Get list of access keys associated with users 'bobfisher' and 'cody3'
   	 {{.Prompt}} {{.HelpName}} play/ uid=bobfisher,dc=min,dc=io uid=cody3,dc=min,dc=io
-  6. Get authenticated user and associated access keys in local server (if not admin)
+  7. Get authenticated user and associated access keys in local server (if not admin)
 	 {{.Prompt}} {{.HelpName}} local/
 	`,
 }

@@ -93,15 +93,23 @@ func loginLDAPAccesskey(ctx *cli.Context) (*madmin.AdminClient, madmin.AddServic
 	console.SetColor(cred, color.New(color.FgYellow, color.Italic))
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Printf("%s", console.Colorize(cred, "Enter LDAP Username: "))
+	printPrompts := term.IsTerminal(int(os.Stdout.Fd()))
+
+	if printPrompts {
+		fmt.Printf("%s", console.Colorize(cred, "Enter LDAP Username: "))
+	}
 	value, _, e := reader.ReadLine()
 	fatalIf(probe.NewError(e), "unable to read username")
 	username := string(value)
 
-	fmt.Printf("%s", console.Colorize(cred, "Enter LDAP Password: "))
+	if printPrompts {
+		fmt.Printf("%s", console.Colorize(cred, "Enter LDAP Password: "))
+	}
 	bytePassword, e := term.ReadPassword(int(os.Stdin.Fd()))
 	fatalIf(probe.NewError(e), "unable to read password")
-	fmt.Printf("\n")
+	if printPrompts {
+		fmt.Printf("\n")
+	}
 	password := string(bytePassword)
 
 	stsCreds, e := credentials.NewLDAPIdentity(urlStr, username, password)

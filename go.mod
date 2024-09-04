@@ -2,6 +2,8 @@ module github.com/minio/mc
 
 go 1.22
 
+replace github.com/minio/madmin-go/v3 => github.com/taran-p/madmin-go/v3 v3.0.55-0.20240904170033-eadd24d6609c
+
 require (
 	github.com/charmbracelet/bubbles v0.19.0
 	github.com/charmbracelet/bubbletea v0.27.1

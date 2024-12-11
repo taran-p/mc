@@ -179,6 +179,12 @@ func deprecatedError(newCommandName string) {
 	fatal(err, "Deprecated command")
 }
 
+// warning for commands that will be deprecated in the future
+func deprecatedWarning(newCommandName string) {
+	err := probe.NewError(fmt.Errorf("Please use '%s' instead.", newCommandName))
+	errorIf(err, "Deprecated command.")
+}
+
 // deprecatedError function for deprecated flags
 func deprecatedFlagError(oldFlag, newFlag string) {
 	err := probe.NewError(fmt.Errorf("'%s' has been deprecated, please use %s instead", oldFlag, newFlag))

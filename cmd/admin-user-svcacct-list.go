@@ -59,6 +59,7 @@ func checkAdminUserSvcAcctListSyntax(ctx *cli.Context) {
 
 // mainAdminUserSvcAcctList is the handle for "mc admin user svcacct ls" command.
 func mainAdminUserSvcAcctList(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey list")
 	checkAdminUserSvcAcctListSyntax(ctx)
 
 	console.SetColor("AccMessage", color.New(color.FgGreen))

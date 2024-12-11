@@ -271,6 +271,7 @@ func (u acctMessage) JSON() string {
 
 // mainAdminUserSvcAcctAdd is the handle for "mc admin user svcacct add" command.
 func mainAdminUserSvcAcctAdd(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey create")
 	checkAdminUserSvcAcctAddSyntax(ctx)
 
 	console.SetColor("AccMessage", color.New(color.FgGreen))

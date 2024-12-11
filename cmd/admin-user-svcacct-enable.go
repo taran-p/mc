@@ -56,6 +56,7 @@ func checkAdminUserSvcAcctEnableSyntax(ctx *cli.Context) {
 
 // mainAdminUserSvcAcctEnable is the handle for "mc admin user svcacct enable" command.
 func mainAdminUserSvcAcctEnable(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey enable")
 	checkAdminUserSvcAcctEnableSyntax(ctx)
 
 	console.SetColor("AccMessage", color.New(color.FgGreen))

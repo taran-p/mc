@@ -67,6 +67,7 @@ func checkAdminUserSvcAcctInfoSyntax(ctx *cli.Context) {
 
 // mainAdminUserSvcAcctInfo is the handle for "mc admin user svcacct info" command.
 func mainAdminUserSvcAcctInfo(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey info")
 	checkAdminUserSvcAcctInfoSyntax(ctx)
 
 	console.SetColor("AccMessage", color.New(color.FgGreen))

@@ -56,6 +56,7 @@ func checkAdminUserSvcAcctRemoveSyntax(ctx *cli.Context) {
 
 // mainAdminUserSvcAcctRemove is the handle for "mc admin user svcacct rm" command.
 func mainAdminUserSvcAcctRemove(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey remove")
 	console.SetColor("AccMessage", color.New(color.FgGreen))
 
 	checkAdminUserSvcAcctRemoveSyntax(ctx)

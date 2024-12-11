@@ -87,6 +87,7 @@ func checkAdminUserSvcAcctSetSyntax(ctx *cli.Context) {
 
 // mainAdminUserSvcAcctSet is the handle for "mc admin user svcacct set" command.
 func mainAdminUserSvcAcctSet(ctx *cli.Context) error {
+	deprecatedWarning("mc admin accesskey edit")
 	checkAdminUserSvcAcctSetSyntax(ctx)
 
 	console.SetColor("AccMessage", color.New(color.FgGreen))

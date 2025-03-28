@@ -215,6 +215,17 @@ var (
 	hostKeyTokens = regexp.MustCompile("^(https?://)(.*?):(.*?):(.*)@(.*?)$")
 )
 
+func isValidURLEndpoint(u *url.URL) bool {
+	// URL style of endpoint.
+	// Valid URL style endpoint is
+	// - Scheme field must contain "http" or "https"
+	// - All field should be empty except Host and Path.
+	isURLOk := (u.Scheme == "http" || u.Scheme == "https") &&
+		u.User == nil && u.Opaque == "" && !u.ForceQuery &&
+		u.RawQuery == "" && u.Fragment == ""
+	return isURLOk
+}
+
 // parse url usually obtained from env.
 func parseEnvURLStr(envURL string) (*url.URL, string, string, string, *probe.Error) {
 	var accessKey, secretKey, sessionToken string
@@ -248,9 +259,7 @@ func parseEnvURLStr(envURL string) (*url.URL, string, string, string, *probe.Err
 		return nil, "", "", "", probe.NewError(e)
 	}
 	// Look for if URL has invalid values and return error.
-	if !((u.Scheme == "http" || u.Scheme == "https") &&
-		(u.Path == "/" || u.Path == "") && u.Opaque == "" &&
-		!u.ForceQuery && u.RawQuery == "" && u.Fragment == "") {
+	if isValidURLEndpoint(u) {
 		return nil, "", "", "", errInvalidArgument().Trace(u.String())
 	}
 	if accessKey == "" && secretKey == "" {

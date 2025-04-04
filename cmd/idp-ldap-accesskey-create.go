@@ -53,11 +53,11 @@ var idpLdapAccesskeyCreateFlags = []cli.Flag{
 	},
 	cli.StringFlag{
 		Name:  "expiry-duration",
-		Usage: "duration before the access key expires",
+		Usage: "duration before the access key expires (up to 1 year)",
 	},
 	cli.StringFlag{
 		Name:  "expiry",
-		Usage: "expiry date for the access key",
+		Usage: "expiry date for the access key (up to 1 year in the future)",
 	},
 	cli.BoolFlag{
 		Name:   "login",
